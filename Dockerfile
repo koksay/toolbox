@@ -10,8 +10,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
     curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
     apt-get update -y && apt-get install -y --no-install-recommends colordiff jq git terraform google-cloud-sdk kubectl docker-ce docker-ce-cli containerd.io && \
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install && \
     pip3 install --no-cache-dir ansible requests google-auth apache-libcloud psycopg2-binary jmespath docker-compose yq mysqlclient dbbot-sqlalchemy kubernetes-validate openshift boto boto3 botocore && \
     ansible-galaxy collection install google.cloud community.general community.kubernetes amazon.aws && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
